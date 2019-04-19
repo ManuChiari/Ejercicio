@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="180dp"
+    android:layout_height="230dp"
+    android:orientation="horizontal"
+    android:id="@+id/color_celda"
+    android:background="#fff2f2"
+    >
+
+    <android.support.v7.widget.CardView
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/card_view"
+        android:layout_gravity="left"
+        android:layout_width="170dp"
+        android:layout_height="220dp"
+        card_view:cardCornerRadius="8dp"
+        card_view:cardElevation="10dp"
+        card_view:contentPadding="10dp"
+        card_view:cardBackgroundColor="@color/colorIcons"
+        android:layout_margin="5dp"
+        >
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_marginRight="2dp"
+                android:layout_height="80dp"
+                android:id="@+id/celda_producto_imagen"
+                android:scaleType="centerCrop"
+                />
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/celda_producto_imagen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="25sp"
+                android:layout_margin="5sp"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:id="@+id/celda_producto_description"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/celda_producto_description"
+                android:id="@+id/celda_prudcto_precio"
+                android:textSize="20sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/celda_prudcto_precio"
+                android:textSize="15sp"
+                android:id="@+id/celda_producto_precio_lista"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/celda_prudcto_precio"
+                android:layout_toRightOf="@id/celda_producto_precio_lista"
+                android:textSize="15sp"
+                android:id="@+id/celda_producto_descuento"
+
+                />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+
+</android.support.design.widget.CoordinatorLayout>
