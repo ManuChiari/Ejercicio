@@ -80,10 +80,10 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         public void bindProducto(Product product) {
             textViewNombreProducto.setText(product.getDescription());
-            Glide.with(itemView).load(product.getImage_url()).into(imageViewProducto);
-            textViewPrecio.setText(product.getPrice());
-            textViewPrecioLista.setText(product.getList_price());
-            textViewDescuento.setText(product.getDiscount());
+            Glide.with(itemView).load("http:" + product.getImage_url()).into(imageViewProducto);
+            textViewPrecio.setText("$ " + product.getPrice().toString());
+            textViewPrecioLista.setText("$ " + product.getList_price().toString());
+            textViewDescuento.setText(product.getDiscount().toString() + "%");
         }
     }
 

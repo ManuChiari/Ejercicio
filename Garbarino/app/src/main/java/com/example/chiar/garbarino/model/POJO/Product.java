@@ -1,18 +1,35 @@
 package com.example.chiar.garbarino.model.POJO;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.List;
 
 public class Product implements Serializable {
+    @SerializedName("id")
+    @Expose
     private String id;
+    @SerializedName("description")
+    @Expose
     private String description;
-    private String price;
-    private String list_price;
+    @SerializedName("price")
+    @Expose
+    private Integer price;
+    @SerializedName("list_price")
+    @Expose
+    private Integer list_price;
+    @SerializedName("discount")
+    @Expose
     private Integer discount;
+    @SerializedName("image_url")
+    @Expose
     private String image_url;
+    @SerializedName("data")
+    @Expose
     private List<Product> data;
 
-    public Product(String id, String description, String price, String list_price, Integer discount, String image_url, List<Product> data) {
+    public Product(String id, String description, Integer price, Integer list_price, Integer discount, String image_url, List<Product> data) {
         this.id = id;
         this.description = description;
         this.price = price;
@@ -34,11 +51,11 @@ public class Product implements Serializable {
         return description;
     }
 
-    public String getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public String getList_price() {
+    public Integer getList_price() {
         return list_price;
     }
 
@@ -62,3 +79,4 @@ public class Product implements Serializable {
                 '}';
     }
 }
+

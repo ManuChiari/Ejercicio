@@ -11,7 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.example.chiar.garbarino.R;
+import com.example.chiar.garbarino.model.POJO.Product;
 import com.example.chiar.garbarino.utils.ListenerProduct;
 
 
@@ -37,12 +39,21 @@ public class FragmentDetailProduct extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_detail_product,container,false);
 
-         imageViewProducto = view.findViewById(R.id.detalle_producto_imagen);
-         textViewNombre = view.findViewById(R.id.detalle_producto_nombre);
-         textViewPrecio = view.findViewById(R.id.detalle_producto_precio);
-         textViewPrecioLista = view.findViewById(R.id.detalle_producto_precio_lista);
-         textViewDescuento = view.findViewById(R.id.detalle_producto_descuento);
-         recyclerView = view.findViewById(R.id.recyclerProductos);
+        imageViewProducto = view.findViewById(R.id.detalle_producto_imagen);
+        textViewNombre = view.findViewById(R.id.detalle_producto_nombre);
+        textViewPrecio = view.findViewById(R.id.detalle_producto_precio);
+        textViewPrecioLista = view.findViewById(R.id.detalle_producto_precio_lista);
+        textViewDescuento = view.findViewById(R.id.detalle_producto_descuento);
+        recyclerView = view.findViewById(R.id.recyclerProductos);
+
+        Product product =  (Product) this.getArguments().getSerializable(FragmentDetailProduct.CLAVE_PRODUCTO);
+
+        Glide.with(this.getActivity()).load("http:" + product.getImage_url()).into(imageViewProducto);
+        textViewNombre.setText(product.getDescription());
+        textViewPrecio.setText("" + product.getPrice());
+        textViewPrecioLista.setText("" + product.getList_price());
+        if (view.findViewById(R.id.celda_producto_descuento) != null)
+            textViewDescuento.setText("" + product.getDiscount());
 
 
         return view;

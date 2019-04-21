@@ -8,8 +8,9 @@ import android.os.Bundle;
 
 import com.example.chiar.garbarino.R;
 import com.example.chiar.garbarino.model.POJO.Product;
+import com.example.chiar.garbarino.utils.ListenerProduct;
 
-public class ProductActivity extends AppCompatActivity implements FragmentProduct.ListenerFragmentProducto {
+public class ProductActivity extends AppCompatActivity implements FragmentProduct.ListenerFragmentProducto, ListenerProduct {
 
 
     @Override
@@ -40,5 +41,10 @@ public class ProductActivity extends AppCompatActivity implements FragmentProduc
         fragmentDetailProduct.setArguments(bundle);
 
         pegarFragment(fragmentDetailProduct);
+    }
+
+    @Override
+    public void productoClick(Product product) {
+        informarProductoSeleccionado(product);
     }
 }
