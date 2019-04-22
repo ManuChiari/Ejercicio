@@ -26,7 +26,7 @@ public class ProductActivity extends AppCompatActivity implements FragmentProduc
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.contenedor_fragments_productos, fragment);
-        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.addToBackStack("producto");
         fragmentTransaction.commit();
 
     }

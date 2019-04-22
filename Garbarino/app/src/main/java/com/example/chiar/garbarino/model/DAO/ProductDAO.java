@@ -1,7 +1,9 @@
 package com.example.chiar.garbarino.model.DAO;
 
+import com.example.chiar.garbarino.model.POJO.DetailContainer;
 import com.example.chiar.garbarino.model.POJO.Product;
 import com.example.chiar.garbarino.model.POJO.ProductContainer;
+import com.example.chiar.garbarino.model.POJO.ReviewContainer;
 import com.example.chiar.garbarino.utils.GarbarinoHelper;
 import com.example.chiar.garbarino.utils.ResultListener;
 
@@ -34,32 +36,32 @@ public class ProductDAO extends MyRetrofit{
 
     }
 
-    public void searchDetail(String id, final ResultListener<Product> listenerController){
-        Call<Product> call = service.searchDetail(id);
-        call.enqueue(new Callback<Product>() {
+    public void searchDetail(String id, final ResultListener<DetailContainer> listenerController){
+        Call<DetailContainer> call = service.searchDetail(id);
+        call.enqueue(new Callback<DetailContainer>() {
             @Override
-            public void onResponse(Call<Product> call, Response<Product> response) {
+            public void onResponse(Call<DetailContainer> call, Response<DetailContainer> response) {
                 listenerController.finish(response.body());
             }
 
             @Override
-            public void onFailure(Call<Product> call, Throwable t) {
+            public void onFailure(Call<DetailContainer> call, Throwable t) {
 
             }
         });
     }
 
-    public void searchReviews (String id, final ResultListener<Product> listenerController ) {
-        Call<Product> call = service.searchReviews(id);
-        call.enqueue(new Callback<Product>() {
+    public void searchReviews (String id, final ResultListener<ReviewContainer> listenerController ) {
+        Call<ReviewContainer> call = service.searchReviews(id);
+        call.enqueue(new Callback<ReviewContainer>() {
             @Override
-            public void onResponse(Call<Product> call, Response<Product> response) {
+            public void onResponse(Call<ReviewContainer> call, Response<ReviewContainer> response) {
                 listenerController.finish(response.body());
             }
 
             @Override
-            public void onFailure(Call<Product> call, Throwable t) {
-
+            public void onFailure(Call<ReviewContainer> call, Throwable t) {
+                t.printStackTrace();
             }
         });
     }
