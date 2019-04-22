@@ -2,6 +2,7 @@ package com.example.chiar.garbarino.view;
 
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -52,8 +53,10 @@ public class FragmentDetailProduct extends Fragment {
         textViewNombre.setText(product.getDescription());
         textViewPrecio.setText("" + product.getPrice());
         textViewPrecioLista.setText("" + product.getList_price());
+        textViewPrecioLista.setPaintFlags(textViewPrecioLista.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         if (view.findViewById(R.id.celda_producto_descuento) != null)
             textViewDescuento.setText("" + product.getDiscount());
+
 
 
         return view;

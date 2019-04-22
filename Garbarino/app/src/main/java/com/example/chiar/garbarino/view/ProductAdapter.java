@@ -1,5 +1,6 @@
 package com.example.chiar.garbarino.view;
 
+import android.graphics.Paint;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -83,7 +84,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             Glide.with(itemView).load("http:" + product.getImage_url()).into(imageViewProducto);
             textViewPrecio.setText("$ " + product.getPrice().toString());
             textViewPrecioLista.setText("$ " + product.getList_price().toString());
-            textViewDescuento.setText(product.getDiscount().toString() + "%");
+            textViewPrecioLista.setPaintFlags(textViewPrecioLista.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+            if (textViewDescuento != null)
+                textViewDescuento.setText(product.getDiscount() + "%");
         }
     }
 
