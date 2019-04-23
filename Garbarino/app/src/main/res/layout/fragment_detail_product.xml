@@ -23,6 +23,8 @@ android:orientation="vertical">
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:id="@+id/detalle_producto_nombre"
         />
@@ -32,7 +34,7 @@ android:orientation="vertical">
         android:layout_height="wrap_content"
         android:textSize="25dp"
         android:layout_marginTop="10dp"
-
+        android:textColor="#D81313"
         android:id="@+id/detalle_producto_precio"
         />
     <LinearLayout
@@ -44,13 +46,15 @@ android:orientation="vertical">
             android:layout_height="wrap_content"
             android:textSize="20dp"
             android:layout_marginTop="10dp"
-
+            android:textColor="#B6B6B6"
             android:id="@+id/detalle_producto_precio_lista"
             />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="#20f535"
             android:textSize="20dp"
             android:id="@+id/detalle_producto_descuento"
             />
@@ -58,6 +62,7 @@ android:orientation="vertical">
 
 
     <LinearLayout
+        android:layout_marginTop="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -66,6 +71,7 @@ android:orientation="vertical">
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"

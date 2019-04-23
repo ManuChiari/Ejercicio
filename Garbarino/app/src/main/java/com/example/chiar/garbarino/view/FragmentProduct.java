@@ -1,19 +1,23 @@
 package com.example.chiar.garbarino.view;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
 
 import com.example.chiar.garbarino.R;
 import com.example.chiar.garbarino.controller.ProductController;
 import com.example.chiar.garbarino.model.POJO.Product;
 import com.example.chiar.garbarino.model.POJO.ProductContainer;
+import com.example.chiar.garbarino.model.POJO.ReviewContainer;
 import com.example.chiar.garbarino.utils.ResultListener;
 
 
@@ -47,6 +51,18 @@ public class FragmentProduct extends Fragment implements ProductAdapter.Listener
             }
         });
     }
+
+//    public void loadRaiting(String id, Activity a){
+////        ProductController productController = new ProductController();
+////        final Activity ctx = a;
+////        productController.searchReviews(id, new ResultListener<ReviewContainer>() {
+////            @Override
+////            public void finish(ReviewContainer result) {
+////                RatingBar ratingBar = new RatingBar(ctx);
+////
+////            }
+////        });
+////    }
 
 
     @Override

@@ -4,7 +4,6 @@
     android:layout_width="195dp"
     android:layout_height="230dp"
     android:layout_margin="5dp"
-    android:background="@drawable/bordershadow"
     android:elevation="5dp"
     app:cardCornerRadius="10dp"
     app:cardElevation="10dp">
@@ -29,15 +28,19 @@
             android:layout_gravity="center"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="15dp" />
-
+            android:textSize="20dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/celda_producto_raiting"
+            />
         <TextView
             android:id="@+id/celda_prudcto_precio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginTop="15dp"
-            android:textColor="#ff0000"
+            android:textColor="#D81313"
+            android:layout_marginLeft="15dp"
             android:textSize="20dp" />
 
         <LinearLayout
@@ -51,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:textColor="#868686"
+                android:textColor="#B6B6B6"
                 android:textSize="20dp" />
 
 

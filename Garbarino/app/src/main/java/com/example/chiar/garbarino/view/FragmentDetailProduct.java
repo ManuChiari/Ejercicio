@@ -64,6 +64,7 @@ public class FragmentDetailProduct extends Fragment {
         textViewPrecioLista = view.findViewById(R.id.detalle_producto_precio_lista);
         textViewPrecioLista.setPaintFlags(textViewPrecioLista.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
         textViewDescuento = view.findViewById(R.id.detalle_producto_descuento);
+
         recyclerView = view.findViewById(R.id.recyclerProductos);
         lstrevies = view.findViewById(R.id.lstrevies);
         lstimages = view.findViewById(R.id.lstimagenes);
@@ -71,7 +72,6 @@ public class FragmentDetailProduct extends Fragment {
 
         Product product =  (Product) this.getArguments().getSerializable(FragmentDetailProduct.CLAVE_PRODUCTO);
 
-        //Puede ue necesitemos volver al listado si hay que filtrar el producto
         if (product.getPrice() == null || product.getDescription() == null) {
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
             fragmentManager.popBackStack("proiducto",0);
@@ -79,16 +79,15 @@ public class FragmentDetailProduct extends Fragment {
 
         Glide.with(this.getActivity()).load("http:" + product.getImage_url()).into(imageViewProducto);
         textViewNombre.setText(product.getDescription());
-        textViewPrecio.setText("" + product.getPrice());
-        textViewPrecioLista.setText("" + product.getList_price());
+        textViewPrecio.setText("$" + product.getPrice());
+        textViewPrecioLista.setText("$" + product.getList_price());
 
-        // Si no nos viene el descuento hacemos modificaciones
-        if (view.findViewById(R.id.celda_producto_descuento) != null) {
+        if (textViewDescuento != null) {
             if (product.getDiscount() == 0 || product.getDiscount() == null) {
                 textViewPrecioLista.setVisibility(View.GONE);
                 textViewDescuento.setVisibility(View.GONE);
             }
-            textViewDescuento.setText("" + product.getDiscount());
+            textViewDescuento.setText(product.getDiscount() + " % OFF");
         }
 
 
@@ -104,38 +103,37 @@ public class FragmentDetailProduct extends Fragment {
         controller.searchReviews(id , new ResultListener<ReviewContainer>() {
             @Override
             public void finish(ReviewContainer result) {
-                Log.v("hola","hola");
                 List<Review> lstRevies = result.getItems().get(0).getReviews();
                 int cont = 0;
                 Log.e("elementos","" + lstRevies.size());
                 while (cont < 3 && cont <lstRevies.size()) {
-                    LinearLayout ll = new LinearLayout(ctx);
-                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                    lp.gravity = Gravity.CENTER_HORIZONTAL;
+                    LinearLayout linearLayout = new LinearLayout(ctx);
+                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    layoutParams.gravity = Gravity.CENTER_HORIZONTAL;
 
-                    ll.setOrientation(LinearLayout.VERTICAL);
-                    ll.setLayoutParams(lp);
-                    LinearLayout ll2 = new LinearLayout(ctx);
-                    ll2.setOrientation(LinearLayout.VERTICAL);
-                    ll2.setLayoutParams(lp);
+                    linearLayout.setOrientation(LinearLayout.VERTICAL);
+                    linearLayout.setLayoutParams(layoutParams);
+                    LinearLayout linearLayout1 = new LinearLayout(ctx);
+                    linearLayout1.setOrientation(LinearLayout.VERTICAL);
+                    linearLayout1.setLayoutParams(layoutParams);
                     TextView titulo = new TextView(ctx);
-                    titulo.setLayoutParams(lp);
+                    titulo.setLayoutParams(layoutParams);
                     titulo.setText(lstRevies.get(cont).getTitle() + "(" + lstRevies.get(cont).getUsernickname()+ ")");
                     TextView review = new TextView(ctx);
-                    review.setLayoutParams(lp);
+                    review.setLayoutParams(layoutParams);
                     review.setText(lstRevies.get(cont).getReviewTYext());
-                    ll2.addView(titulo);
-                    ll2.addView(review);
-                    LinearLayout.LayoutParams lp2 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-                    RatingBar rb = new RatingBar(ctx);
-                    rb.setLayoutParams(lp2);
-                    rb.setNumStars(5);
-                    rb.setStepSize(0.1f);
-                    rb.setIsIndicator(true);
-                    rb.setRating(lstRevies.get(cont).getRating());
-                    ll2.addView(rb);
-                    ll.addView(ll2);
-                    lstrevies.addView(ll);
+                    linearLayout1.addView(titulo);
+                    linearLayout1.addView(review);
+                    LinearLayout.LayoutParams layoutParams1 = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+                    RatingBar ratingBar = new RatingBar(ctx);
+                    ratingBar.setLayoutParams(layoutParams1);
+                    ratingBar.setNumStars(5);
+                    ratingBar.setStepSize(0.1f);
+                    ratingBar.setIsIndicator(true);
+                    ratingBar.setRating(lstRevies.get(cont).getRating());
+                    linearLayout1.addView(ratingBar);
+                    linearLayout.addView(linearLayout1);
+                    lstrevies.addView(linearLayout);
                     cont++;
                 }
             }
@@ -151,20 +149,19 @@ public class FragmentDetailProduct extends Fragment {
                 List<Detail> lstImages = result.getResources().getImages();
                 int cont = 0;
                 for (Detail detail : lstImages) {
-                    LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
-                    lp.gravity = Gravity.CENTER_HORIZONTAL;
+                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+                    layoutParams.gravity = Gravity.CENTER_HORIZONTAL;
 
-                    ImageView iv = new ImageView(ctx);
-                    iv.setLayoutParams(lp);
-                    iv.setAdjustViewBounds(true);
-                    Glide.with(ctx).load("http:" + detail.getUrl()).into(iv);
-                    lstimages.addView(iv);
+                    ImageView imageView = new ImageView(ctx);
+                    imageView.setLayoutParams(layoutParams);
+                    imageView.setAdjustViewBounds(true);
+                    Glide.with(ctx).load("http:" + detail.getUrl()).into(imageView);
+                    lstimages.addView(imageView);
                     cont++;
                 }
             }
         });
     }
-
 
     @Override
     public void onAttach(Context context) {

@@ -22,4 +22,8 @@ public class ReviewBucket {
     public String getQuery() {
         return query;
     }
+
+    public String getAverage_overal_rating() {
+        return average_overal_rating;
+    }
 }

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.chiar.garbarino.R;
 import com.example.chiar.garbarino.model.POJO.Product;
+import com.example.chiar.garbarino.model.POJO.ReviewBucket;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,8 +86,14 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             textViewPrecio.setText("$ " + product.getPrice().toString());
             textViewPrecioLista.setText("$ " + product.getList_price().toString());
             textViewPrecioLista.setPaintFlags(textViewPrecioLista.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-            if (textViewDescuento != null)
-                textViewDescuento.setText(product.getDiscount() + "%");
+
+            if (textViewDescuento != null) {
+                if (product.getDiscount() == 0 || product.getDiscount() == null) {
+                    textViewPrecioLista.setVisibility(View.GONE);
+                    textViewDescuento.setVisibility(View.GONE);
+                }
+                textViewDescuento.setText(product.getDiscount() + " % OFF");
+            }
         }
     }
 
