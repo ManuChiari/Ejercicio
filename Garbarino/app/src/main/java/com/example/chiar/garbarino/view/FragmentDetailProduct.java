@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Slide;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -87,12 +88,16 @@ public class FragmentDetailProduct extends Fragment {
                 textViewPrecioLista.setVisibility(View.GONE);
                 textViewDescuento.setVisibility(View.GONE);
             }
-            textViewDescuento.setText(product.getDiscount() + " % OFF");
+            textViewDescuento.setText("  " + product.getDiscount() + "% OFF");
         }
 
 
         loadImages(this.getActivity(), product.getId());
         loadReview(this.getActivity(), product.getId());
+        Slide slide = new Slide();
+        slide.setDuration(600);
+        slide.setSlideEdge(Gravity.LEFT);
+
 
         return view;
     }

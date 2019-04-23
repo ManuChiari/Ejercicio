@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="195dp"
+    android:layout_width="170dp"
     android:layout_height="230dp"
     android:layout_margin="5dp"
     android:elevation="5dp"
     app:cardCornerRadius="10dp"
-    app:cardElevation="10dp">
+    app:cardElevation="5dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,11 +29,7 @@
             android:textAlignment="center"
             android:textColor="#000000"
             android:textSize="20dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/celda_producto_raiting"
-            />
+
         <TextView
             android:id="@+id/celda_prudcto_precio"
             android:layout_width="wrap_content"
@@ -55,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:textColor="#B6B6B6"
-                android:textSize="20dp" />
+                android:textSize="15dp" />
 
 
             <TextView
@@ -64,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:textColor="#20f535"
-                android:textSize="20dp" />
+                android:textSize="15dp" />
         </LinearLayout>
     </LinearLayout>
 </android.support.v7.widget.CardView>

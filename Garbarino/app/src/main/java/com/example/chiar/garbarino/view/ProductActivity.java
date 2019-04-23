@@ -5,6 +5,8 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.transition.Slide;
+import android.view.Gravity;
 
 import com.example.chiar.garbarino.R;
 import com.example.chiar.garbarino.model.POJO.Product;
@@ -15,6 +17,7 @@ public class ProductActivity extends AppCompatActivity implements FragmentProduc
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_producto);
 
@@ -25,8 +28,9 @@ public class ProductActivity extends AppCompatActivity implements FragmentProduc
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.entrada_fragment, R.anim.salida_fragment);
         fragmentTransaction.replace(R.id.contenedor_fragments_productos, fragment);
-        fragmentTransaction.addToBackStack("producto");
+        fragmentTransaction.addToBackStack("product");
         fragmentTransaction.commit();
 
     }

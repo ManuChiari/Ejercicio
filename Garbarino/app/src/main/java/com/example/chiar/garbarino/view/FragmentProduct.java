@@ -8,6 +8,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Slide;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +29,6 @@ public class FragmentProduct extends Fragment implements ProductAdapter.Listener
     private ProductAdapter productAdapter;
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_product, container, false);
@@ -37,6 +38,7 @@ public class FragmentProduct extends Fragment implements ProductAdapter.Listener
         productAdapter = new ProductAdapter(this);
         recyclerViewProductos.setAdapter(productAdapter);
         loadProduct();
+
 
         return view;
     }
