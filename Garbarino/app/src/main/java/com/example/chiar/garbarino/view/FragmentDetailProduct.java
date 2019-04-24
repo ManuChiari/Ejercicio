@@ -75,7 +75,7 @@ public class FragmentDetailProduct extends Fragment {
 
         if (product.getPrice() == null || product.getDescription() == null) {
             FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-            fragmentManager.popBackStack("proiducto",0);
+            fragmentManager.popBackStack("producto",0);
         }
 
         Glide.with(this.getActivity()).load("http:" + product.getImage_url()).into(imageViewProducto);
@@ -94,9 +94,6 @@ public class FragmentDetailProduct extends Fragment {
 
         loadImages(this.getActivity(), product.getId());
         loadReview(this.getActivity(), product.getId());
-        Slide slide = new Slide();
-        slide.setDuration(600);
-        slide.setSlideEdge(Gravity.LEFT);
 
 
         return view;
@@ -167,6 +164,7 @@ public class FragmentDetailProduct extends Fragment {
             }
         });
     }
+
 
     @Override
     public void onAttach(Context context) {
